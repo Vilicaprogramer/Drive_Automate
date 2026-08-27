@@ -49,7 +49,6 @@ form.addEventListener('submit', e => {
             formStatus.textContent = 'Hubo un error al enviar. Por favor, inténtalo de nuevo.';
             formStatus.className = 'error-msg';
             formStatus.style.display = 'block';
-            console.error(error);
         })
         .finally(() => {
             submitBtn.disabled = false;

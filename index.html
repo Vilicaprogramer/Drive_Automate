@@ -6,493 +6,12 @@
     <title>DriveForge | Automatización Google Sin Intermediarios</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-        :root {
-            --bg-deep: #030712;
-            --bg-card: rgba(15, 23, 42, 0.6);
-            --border-glow: rgba(59, 130, 246, 0.3);
-            --primary: #3b82f6;
-            --primary-glow: rgba(59, 130, 246, 0.5);
-            --accent-google-green: #34a853;
-            --accent-google-blue: #4285f4;
-            --accent-google-yellow: #fbbc05;
-            --accent-google-red: #ea4335;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Plus Jakarta+Sans', sans-serif;
-            background-color: var(--bg-deep);
-            color: var(--text-main);
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-
-        /* Fondo futurista con malla y partículas de luz */
-        .cyber-grid {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-image: 
-                linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
-            background-size: 40px 40px;
-            z-index: -2;
-        }
-
-        .glow-orb {
-            position: fixed;
-            width: 500px;
-            height: 500px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(59,130,246,0.15) 0%, rgba(3,7,18,0) 70%);
-            z-index: -1;
-            filter: blur(80px);
-            pointer-events: none;
-            animation: floatOrb 12s infinite alternate ease-in-out;
-        }
-
-        .orb-1 { top: -100px; left: -100px; }
-        .orb-2 { bottom: -100px; right: -100px; background: radial-gradient(circle, rgba(52,168,83,0.1) 0%, rgba(3,7,18,0) 70%); }
-
-        @keyframes floatOrb {
-            0% { transform: translateY(0) scale(1); }
-            100% { transform: translateY(50px) scale(1.1); }
-        }
-
-        /* Header / Navegación */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 20px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            backdrop-filter: blur(12px);
-            background: rgba(3, 7, 18, 0.8);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            z-index: 1000;
-        }
-
-        .logo {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-        }
-
-        .logo-badge {
-            width: 10px;
-            height: 10px;
-            background: var(--accent-google-blue);
-            border-radius: 50%;
-            box-shadow: 0 0 10px var(--accent-google-blue);
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(66, 133, 244, 0.7); }
-            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(66, 133, 244, 0); }
-            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(66, 133, 244, 0); }
-        }
-
-        .nav-cta {
-            background: linear-gradient(135deg, var(--accent-google-blue), var(--primary));
-            color: white;
-            padding: 10px 24px;
-            border-radius: 30px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            text-decoration: none;
-            transition: var(--transition);
-            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
-        }
-
-        .nav-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 25px rgba(59, 130, 246, 0.5);
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 140px 5% 80px;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .google-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 8px 18px;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            margin-bottom: 30px;
-            backdrop-filter: blur(5px);
-            animation: fadeInDown 0.8s ease;
-        }
-
-        .google-dots {
-            display: flex;
-            gap: 4px;
-        }
-
-        .dot { width: 6px; height: 6px; border-radius: 50%; }
-        .dot-blue { background: var(--accent-google-blue); }
-        .dot-red { background: var(--accent-google-red); }
-        .dot-yellow { background: var(--accent-google-yellow); }
-        .dot-green { background: var(--accent-google-green); }
-
-        h1 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(2.5rem, 5vw, 4.2rem);
-            font-weight: 800;
-            line-height: 1.15;
-            margin-bottom: 24px;
-            letter-spacing: -0.02em;
-        }
-
-        h1 span {
-            background: linear-gradient(135deg, #60a5fa 0%, #34d399 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero p {
-            font-size: clamp(1.05rem, 1.8vw, 1.25rem);
-            color: var(--text-muted);
-            max-width: 720px;
-            margin-bottom: 40px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-            color: white;
-            padding: 16px 36px;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 1rem;
-            text-decoration: none;
-            transition: var(--transition);
-            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(59, 130, 246, 0.6);
-            background: linear-gradient(135deg, #2563eb, #1e40af);
-        }
-
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.03);
-            color: var(--text-main);
-            padding: 16px 36px;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 1rem;
-            text-decoration: none;
-            transition: var(--transition);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 255, 255, 0.2);
-            transform: translateY(-3px);
-        }
-
-        /* Sección de Confianza / Google Ecosystem Bar */
-        .trust-banner {
-            padding: 40px 5%;
-            background: rgba(15, 23, 42, 0.4);
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            text-align: center;
-        }
-
-        .trust-title {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--text-muted);
-            margin-bottom: 25px;
-        }
-
-        .trust-grid {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            flex-wrap: wrap;
-            align-items: center;
-            opacity: 0.8;
-        }
-
-        .trust-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            color: var(--text-main);
-        }
-
-        .trust-item svg {
-            width: 20px;
-            height: 20px;
-            fill: var(--accent-google-blue);
-        }
-
-        /* Características / El Problema de Make/Zapier */
-        .features {
-            padding: 100px 5%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 70px;
-        }
-
-        .section-header h2 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(2rem, 3vw, 2.8rem);
-            margin-bottom: 16px;
-            font-weight: 700;
-        }
-
-        .section-header p {
-            color: var(--text-muted);
-            font-size: 1.05rem;
-        }
-
-        .comparison-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-        }
-
-        .card {
-            background: var(--bg-card);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 20px;
-            padding: 40px;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--primary), transparent);
-            opacity: 0;
-            transition: var(--transition);
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(59, 130, 246, 0.3);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-        }
-
-        .card:hover::before {
-            opacity: 1;
-        }
-
-        .card-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
-            background: rgba(59, 130, 246, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 24px;
-            font-size: 1.4rem;
-        }
-
-        .card h3 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.3rem;
-            margin-bottom: 12px;
-            font-weight: 600;
-        }
-
-        .card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        /* Sección del Formulario / Contacto Futurista */
-        .contact-section {
-            padding: 100px 5%;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .contact-box {
-            background: linear-gradient(145deg, rgba(15, 23, 42, 0.8), rgba(30, 41, 59, 0.4));
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            border-radius: 24px;
-            padding: 50px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(20px);
-            position: relative;
-        }
-
-        .contact-box h2 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 2rem;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-
-        .contact-box p {
-            color: var(--text-muted);
-            text-align: center;
-            margin-bottom: 40px;
-            font-size: 0.95rem;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 16px 20px;
-            background: rgba(3, 7, 18, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            color: white;
-            font-family: inherit;
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-
-        .form-control:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 15px rgba(59, 130, 246, 0.2);
-            background: rgba(3, 7, 18, 0.9);
-        }
-
-        textarea.form-control {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 18px;
-            background: linear-gradient(135deg, var(--accent-google-blue), var(--primary));
-            color: white;
-            border: none;
-            border-radius: 12px;
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: var(--transition);
-            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4);
-            margin-top: 10px;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 35px rgba(59, 130, 246, 0.6);
-        }
-
-        /* Success Message State */
-        #form-status {
-            margin-top: 20px;
-            text-align: center;
-            font-weight: 600;
-            font-size: 0.95rem;
-            display: none;
-        }
-
-        .success-msg { color: #34d399; }
-        .error-msg { color: #f87171; }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 40px 5%;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            color: var(--text-muted);
-            font-size: 0.85rem;
-        }
-
-        footer span {
-            color: var(--text-main);
-            font-weight: 600;
-        }
-
-        @media (max-width: 768px) {
-            .contact-box { padding: 30px 20px; }
-            .hero { padding-top: 120px; }
-        }
 </head>
 <body>
-
     <div class="cyber-grid"></div>
     <div class="glow-orb orb-1"></div>
     <div class="glow-orb orb-2"></div>
 
-    <!-- Header -->
     <header>
         <a href="#" class="logo">
             <div class="logo-badge"></div>
@@ -501,7 +20,6 @@
         <a href="#contacto" class="nav-cta">Automatizar Ahora</a>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="google-pill">
             <div class="google-dots">
@@ -512,11 +30,8 @@
             </div>
             Infraestructura Nativa Google Apps Script
         </div>
-        
         <h1>Automatiza tu negocio en Google Drive <span>sin intermediarios ni cuotas mensuales.</span></h1>
-        
         <p>¿Pagas suscripciones caras en Make o Zapier para conectar tus herramientas? Diseñamos automatizaciones a medida directamente dentro del ecosistema Google para que ahorres tiempo y dinero desde el primer día.</p>
-        
         <div class="hero-buttons">
             <a href="#contacto" class="btn-primary">
                 Solicitar Estudio Gratuito
@@ -526,7 +41,6 @@
         </div>
     </section>
 
-    <!-- Trust Banner -->
     <div class="trust-banner">
         <div class="trust-title">Diseñado exclusivamente para entornos de confianza Google</div>
         <div class="trust-grid">
@@ -545,66 +59,35 @@
         </div>
     </div>
 
-    <!-- Features Section -->
     <section id="ventajas" class="features">
         <div class="section-header">
             <h2>¿Por qué pagar comisiones a terceros si ya usas Google?</h2>
             <p>Las pymes y autónomos pierden horas al día copiando datos entre hojas, generando facturas a mano y moviendo archivos en Drive. Te mostramos por qué nuestra arquitectura nativa supera a las plataformas tradicionales.</p>
         </div>
-
         <div class="comparison-grid">
-            <div class="card">
-                <div class="card-icon">⚡</div>
-                <h3>Cero Intermediarios</h3>
-                <p>Olvídate de Make, Zapier o pasarelas externas que cobran por cada ejecución. Todo corre de forma autónoma, segura y gratuita dentro de tus propios servidores de Google.</p>
-            </div>
-            <div class="card">
-                <div class="card-icon">🔒</div>
-                <h3>Privacidad Absoluta</h3>
-                <p>Tus datos confidenciales, facturas y bases de datos de clientes nunca salen del entorno corporativo de tu cuenta de Google Workspace.</p>
-            </div>
-            <div class="card">
-                <div class="card-icon">💰</div>
-                <h3>Ahorro Real y Escalable</h3>
-                <p>Pago único por desarrollo a medida. Sin cuotas mensuales sorpresa que aumentan a medida que crece el volumen de operaciones de tu negocio.</p>
-            </div>
+            <div class="card"><div class="card-icon">⚡</div><h3>Cero Intermediarios</h3><p>Olvídate de Make, Zapier o pasarelas externas que cobran por cada ejecución. Todo corre de forma autónoma, segura y gratuita dentro de tus propios servidores de Google.</p></div>
+            <div class="card"><div class="card-icon">🔒</div><h3>Privacidad Absoluta</h3><p>Tus datos confidenciales, facturas y bases de datos de clientes nunca salen del entorno corporativo de tu cuenta de Google Workspace.</p></div>
+            <div class="card"><div class="card-icon">💰</div><h3>Ahorro Real y Escalable</h3><p>Pago único por desarrollo a medida. Sin cuotas mensuales sorpresa que aumentan a medida que crece el volumen de operaciones de tu negocio.</p></div>
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section id="contacto" class="contact-section">
         <div class="contact-box">
             <h2>Solicita tu Automatización</h2>
             <p>Cuéntanos qué procesos repetitivos haces cada semana en tu Drive o Sheets y te diseñaremos una solución a medida.</p>
-            
             <form id="automationForm">
-                <div class="form-group">
-                    <label for="nombre">Nombre o Empresa</label>
-                    <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Ej. Ana Pérez (Consultoría)" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="email">Correo Electrónico</label>
-                    <input type="email" id="email" name="email" class="form-control" placeholder="tu@correo.com" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="mensaje">¿Qué proceso te gustaría automatizar?</label>
-                    <textarea id="mensaje" name="mensaje" class="form-control" placeholder="Ej. Automatizar la creación de carpetas y PDFs de factura cada vez que se rellena un Google Form..." required></textarea>
-                </div>
-                
+                <div class="form-group"><label for="nombre">Nombre o Empresa</label><input type="text" id="nombre" name="nombre" class="form-control" placeholder="Ej. Ana Pérez (Consultoría)" required></div>
+                <div class="form-group"><label for="email">Correo Electrónico</label><input type="email" id="email" name="email" class="form-control" placeholder="tu@correo.com" required></div>
+                <div class="form-group"><label for="mensaje">¿Qué proceso te gustaría automatizar?</label><textarea id="mensaje" name="mensaje" class="form-control" placeholder="Ej. Automatizar la creación de carpetas y PDFs de factura cada vez que se rellena un Google Form..." required></textarea></div>
                 <button type="submit" class="submit-btn" id="submitBtn">Enviar Petición de Automatización</button>
                 <div id="form-status"></div>
             </form>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <p>&copy; 2026 <span>DriveForge</span>. Automatización inteligente en entorno Google para Pymes y Autónomos.</p>
     </footer>
-
-    <!-- JavaScript para conectar con Google Apps Script -->
     <script src="script.js"></script>
 </body>
 </html>
