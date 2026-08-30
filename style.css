@@ -83,12 +83,6 @@ header {
     z-index: 1000;
 }
 
-.header-actions {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
 .logo {
     font-family: 'Space Grotesk', sans-serif;
     font-size: 1.4rem;
@@ -471,12 +465,20 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 30px 5%;
+    padding: 24px 5%;
     margin-top: 40px;
     color: var(--text-muted);
     font-size: 0.85rem;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 16px;
+}
+
+footer p {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 0;
 }
 
 footer span {
@@ -484,26 +486,29 @@ footer span {
     font-weight: 600;
 }
 
+.lang-switch-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .lang-btn {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.15);
     color: var(--text-main);
-    padding: 8px 16px;
+    padding: 9px 16px;
     border-radius: 20px;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: 600;
     cursor: pointer;
     transition: var(--transition);
-    display: flex;
+    display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 6px;
     backdrop-filter: blur(5px);
-}
-
-.header-actions .lang-btn {
-    padding: 10px 14px;
-    min-width: 72px;
-    justify-content: center;
+    line-height: 1;
+    min-width: 78px;
 }
 
 .lang-btn:hover {
@@ -515,5 +520,12 @@ footer span {
 @media (max-width: 768px) {
     .contact-box { padding: 30px 20px; }
     .hero { padding-top: 120px; }
-    footer { flex-direction: column; text-align: center; }
+    footer {
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+    }
+    footer p {
+        justify-content: center;
+    }
 }
