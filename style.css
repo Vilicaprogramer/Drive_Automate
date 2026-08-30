@@ -1,7 +1,7 @@
 :root {
     --bg-deep: #030712;
-    --bg-card: rgba(15, 23, 42, 0.6);
-    --border-glow: rgba(59, 130, 246, 0.3);
+    --bg-card: rgba(15, 23, 42, 0.45);
+    --border-glow: rgba(59, 130, 246, 0.25);
     --primary: #3b82f6;
     --primary-glow: rgba(59, 130, 246, 0.5);
     --accent-google-green: #34a853;
@@ -20,11 +20,20 @@
 }
 
 body {
-    font-family: 'Plus Jakarta+Sans', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     background-color: var(--bg-deep);
     color: var(--text-main);
     overflow-x: hidden;
     line-height: 1.6;
+}
+
+/* Efecto Glassmorphism General para Todos los Contenedores */
+.glass-container {
+    background: rgba(15, 23, 42, 0.5) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
 /* Fondo futurista con malla y partículas de luz */
@@ -34,7 +43,7 @@ body {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-image:
+    background-image: 
         linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
         linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
     background-size: 40px 40px;
@@ -67,13 +76,10 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    padding: 20px 5%;
+    padding: 18px 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    backdrop-filter: blur(12px);
-    background: rgba(3, 7, 18, 0.8);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     z-index: 1000;
 }
 
@@ -137,14 +143,11 @@ header {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
     padding: 8px 18px;
     border-radius: 50px;
     font-size: 0.85rem;
     font-weight: 500;
     margin-bottom: 30px;
-    backdrop-filter: blur(5px);
     animation: fadeInDown 0.8s ease;
 }
 
@@ -232,10 +235,10 @@ h1 span {
 
 /* Sección de Confianza / Google Ecosystem Bar */
 .trust-banner {
-    padding: 40px 5%;
-    background: rgba(15, 23, 42, 0.4);
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 35px 5%;
+    border-radius: 16px;
+    max-width: 1100px;
+    margin: 0 auto;
     text-align: center;
 }
 
@@ -253,7 +256,7 @@ h1 span {
     gap: 40px;
     flex-wrap: wrap;
     align-items: center;
-    opacity: 0.8;
+    opacity: 0.9;
 }
 
 .trust-item {
@@ -271,7 +274,7 @@ h1 span {
     fill: var(--accent-google-blue);
 }
 
-/* Características / El Problema de Make/Zapier */
+/* Ventajas / Características */
 .features {
     padding: 100px 5%;
     max-width: 1200px;
@@ -303,8 +306,6 @@ h1 span {
 }
 
 .card {
-    background: var(--bg-card);
-    border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: 20px;
     padding: 40px;
     transition: var(--transition);
@@ -326,8 +327,8 @@ h1 span {
 
 .card:hover {
     transform: translateY(-5px);
-    border-color: rgba(59, 130, 246, 0.3);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    border-color: rgba(59, 130, 246, 0.4) !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
 }
 
 .card:hover::before {
@@ -338,7 +339,7 @@ h1 span {
     width: 50px;
     height: 50px;
     border-radius: 12px;
-    background: rgba(59, 130, 246, 0.1);
+    background: rgba(59, 130, 246, 0.15);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -359,20 +360,16 @@ h1 span {
     line-height: 1.6;
 }
 
-/* Sección del Formulario / Contacto Futurista */
+/* Sección de Contacto */
 .contact-section {
-    padding: 100px 5%;
+    padding: 80px 5% 100px;
     max-width: 800px;
     margin: 0 auto;
 }
 
 .contact-box {
-    background: linear-gradient(145deg, rgba(15, 23, 42, 0.8), rgba(30, 41, 59, 0.4));
-    border: 1px solid rgba(59, 130, 246, 0.2);
     border-radius: 24px;
     padding: 50px;
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(20px);
     position: relative;
 }
 
@@ -404,11 +401,15 @@ h1 span {
     letter-spacing: 1px;
 }
 
+.glass-input {
+    background: rgba(3, 7, 18, 0.5) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    backdrop-filter: blur(8px) !important;
+}
+
 .form-control {
     width: 100%;
     padding: 16px 20px;
-    background: rgba(3, 7, 18, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
     color: white;
     font-family: inherit;
@@ -418,9 +419,9 @@ h1 span {
 
 .form-control:focus {
     outline: none;
-    border-color: var(--primary);
-    box-shadow: 0 0 15px rgba(59, 130, 246, 0.2);
-    background: rgba(3, 7, 18, 0.9);
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+    background: rgba(3, 7, 18, 0.8) !important;
 }
 
 textarea.form-control {
@@ -448,7 +449,6 @@ textarea.form-control {
     box-shadow: 0 15px 35px rgba(59, 130, 246, 0.6);
 }
 
-/* Success Message State */
 #form-status {
     margin-top: 20px;
     text-align: center;
@@ -462,11 +462,15 @@ textarea.form-control {
 
 /* Footer */
 footer {
-    text-align: center;
-    padding: 40px 5%;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 5%;
+    margin-top: 40px;
     color: var(--text-muted);
     font-size: 0.85rem;
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
 footer span {
@@ -474,7 +478,30 @@ footer span {
     font-weight: 600;
 }
 
+.lang-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: var(--text-main);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    backdrop-filter: blur(5px);
+}
+
+.lang-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: var(--primary);
+    transform: translateY(-2px);
+}
+
 @media (max-width: 768px) {
     .contact-box { padding: 30px 20px; }
     .hero { padding-top: 120px; }
+    footer { flex-direction: column; text-align: center; }
 }
