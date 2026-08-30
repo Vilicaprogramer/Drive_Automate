@@ -1,5 +1,5 @@
 // Reemplaza esta URL por la URL real obtenida al desplegar tu Google Apps Script como Aplicación Web
-const scriptURL = 'https://script.google.com/macros/s/TU_SCRIPT_ID_AQUI/exec';
+const scriptURL = 'https://script.google.com/macros/s/AKfycbzqqFbPoHhbUPd9vbq7uCxLow3p44bu5aqhXiV8wWOMqn2CWMHnThx4JZNsATnyJvkdMQ/exec';
 
 // Objeto de traducciones (i18n) Español / Inglés
 const translations = {
