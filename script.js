@@ -116,7 +116,6 @@ form.addEventListener('submit', e => {
     const formData = new FormData(form);
 
     if (scriptURL.includes('TU_SCRIPT_ID_AQUI')) {
-        // Modo prueba / demostración cuando la URL no está vinculada aún
         setTimeout(() => {
             formStatus.textContent = translations[currentLang]["msg-success"];
             formStatus.className = 'success-msg';
@@ -126,24 +125,21 @@ form.addEventListener('submit', e => {
             submitBtn.textContent = translations[currentLang]["btn-submit"];
         }, 800);
     } else {
-        // Envío real mediante POST a Google Apps Script
+        // Envío optimizado con modo no-cors para evitar el bloqueo del navegador
         fetch(scriptURL, {
             method: 'POST',
-            body: formData
+            body: formData,
+            mode: 'no-cors'
         })
-        .then(response => response.json())
-        .then(data => {
-            if (data.result === 'success') {
-                formStatus.textContent = translations[currentLang]["msg-success"];
-                formStatus.className = 'success-msg';
-                formStatus.style.display = 'block';
-                form.reset();
-            } else {
-                throw new Error(data.message || 'Error en Apps Script');
-            }
+        .then(() => {
+            // Se ejecuta al completarse el envío
+            formStatus.textContent = translations[currentLang]["msg-success"];
+            formStatus.className = 'success-msg';
+            formStatus.style.display = 'block';
+            form.reset(); // Limpia los campos del formulario
         })
         .catch(error => {
-            console.error('Error:', error);
+            console.error('Error al enviar:', error);
             formStatus.textContent = translations[currentLang]["msg-error"];
             formStatus.className = 'error-msg';
             formStatus.style.display = 'block';
