@@ -83,6 +83,12 @@ header {
     z-index: 1000;
 }
 
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
 .logo {
     font-family: 'Space Grotesk', sans-serif;
     font-size: 1.4rem;
@@ -492,6 +498,12 @@ footer span {
     align-items: center;
     gap: 6px;
     backdrop-filter: blur(5px);
+}
+
+.header-actions .lang-btn {
+    padding: 10px 14px;
+    min-width: 72px;
+    justify-content: center;
 }
 
 .lang-btn:hover {
