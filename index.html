@@ -1,122 +1,189 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="meta-title">DriveAutomate | Automatización Google Sin Intermediarios</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="DriveAutomate automatiza procesos dentro de Google Workspace sin intermediarios ni cuotas recurrentes." />
+    <title>DriveAutomate | Automatización Google Sin Intermediarios</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <div class="cyber-grid"></div>
     <div class="glow-orb orb-1"></div>
     <div class="glow-orb orb-2"></div>
 
-    <header class="glass-container">
-        <a href="#" class="logo">
-            <div class="logo-badge"></div>
-            DriveAutomate
+    <header class="main-header">
+      <div class="header-inner">
+        <a href="#top" class="logo" aria-label="DriveAutomate home">
+          <span class="logo-badge"></span>
+          <span>DriveAutomate</span>
         </a>
-        <a href="#contacto" class="nav-cta" data-i18n="nav-cta">Automatizar Ahora</a>
+
+        <div class="header-actions">
+          <button type="button" class="lang-btn" id="langToggleBtn" aria-label="Cambiar a inglés">
+            <span id="langText">EN</span>
+          </button>
+
+          <button type="button" class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Abrir menú">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+
+      <nav class="mobile-menu" id="mobileMenu" aria-label="Menú móvil">
+        <a href="#features" class="menu-link" data-i18n="menu-how">Descubre cómo funciona</a>
+        <a href="#examples" class="menu-link" data-i18n="menu-examples">Algunos ejemplos</a>
+        <a href="#contact" class="menu-link menu-link-cta" data-i18n="menu-cta">Solicitar Estudio Gratuito</a>
+      </nav>
     </header>
 
-    <section class="hero">
+    <main id="top">
+      <section class="hero">
         <div class="google-pill glass-container">
-            <div class="google-dots">
-                <div class="dot dot-blue"></div>
-                <div class="dot dot-red"></div>
-                <div class="dot dot-yellow"></div>
-                <div class="dot dot-green"></div>
-            </div>
-            <span data-i18n="hero-pill">Infraestructura Nativa Google Apps Script</span>
+          <span class="google-dots" aria-hidden="true">
+            <span class="dot dot-blue"></span>
+            <span class="dot dot-red"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
+          </span>
+          <span data-i18n="hero-pill">Infraestructura Nativa Google Apps Script</span>
         </div>
-        
-        <h1 data-i18n="hero-title">Automatiza tu negocio en Google Drive <span data-i18n="hero-title-span">sin intermediarios ni cuotas mensuales.</span></h1>
-        
-        <p data-i18n="hero-desc">¿Pagas suscripciones mensuales en plataformas externas solo para conectar tus herramientas? Diseñamos automatizaciones a medida directamente dentro de tu propio entorno Google para que ahorres tiempo y dinero de forma permanente.</p>
-        
-        <div class="hero-buttons">
-            <a href="#contacto" class="btn-primary">
-                <span data-i18n="hero-btn-primary">Solicitar Estudio Gratuito</span>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            </a>
-            <a href="#ventajas" class="btn-secondary" data-i18n="hero-btn-secondary">Descubre cómo funciona</a>
-        </div>
-    </section>
 
-    <div class="trust-banner glass-container">
+        <h1>
+          <span data-i18n="hero-title">Automatiza tu negocio en Google Drive</span>
+          <span class="highlight" data-i18n="hero-title-span">sin intermediarios ni cuotas mensuales.</span>
+        </h1>
+
+        <p data-i18n="hero-desc">
+          ¿Pagas suscripciones mensuales en plataformas externas solo para conectar tus herramientas? Diseñamos automatizaciones a medida directamente dentro de tu propio entorno Google para que ahorres tiempo y dinero de forma permanente.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#contact" class="btn-primary" data-i18n="hero-btn-primary">Solicitar Estudio Gratuito</a>
+          <a href="#features" class="btn-secondary" data-i18n="hero-btn-secondary">Descubre cómo funciona</a>
+        </div>
+      </section>
+
+      <section class="trust-banner" aria-label="Confianza de ecosistema Google">
         <div class="trust-title" data-i18n="trust-title">Diseñado exclusivamente para entornos de confianza Google</div>
         <div class="trust-grid">
-            <div class="trust-item">
-                <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
-                Google Sheets & Docs
-            </div>
-            <div class="trust-item">
-                <svg viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM19 18H6c-2.21 0-4-1.79-4-4 0-2.05 1.53-3.76 3.56-3.97l1.07-.11.5-.95C8.08 7.14 9.94 6 12 6c2.62 0 4.88 1.86 5.39 4.43l.3 1.5 1.53.11c1.56.1 2.78 1.41 2.78 2.96 0 1.65-1.35 3-3 3z"/></svg>
-                Google Drive Cloud
-            </div>
-            <div class="trust-item">
-                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.03 2.75z"/></svg>
-                Google Apps Script Nativo
-            </div>
+          <div class="trust-item">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5a9.5 9.5 0 1 1 0 19 9.5 9.5 0 0 1 0-19Zm.95 4.55-.2.01-3.35 3.02-1.5-1.5a1 1 0 1 0-1.41 1.42l2.2 2.2a1 1 0 0 0 1.45-.04l4.02-4.57a1 1 0 0 0-.75-1.55Z"/></svg>
+            Google Drive
+          </div>
+          <div class="trust-item">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5a9.5 9.5 0 1 1 0 19 9.5 9.5 0 0 1 0-19Zm.95 4.55-.2.01-3.35 3.02-1.5-1.5a1 1 0 1 0-1.41 1.42l2.2 2.2a1 1 0 0 0 1.45-.04l4.02-4.57a1 1 0 0 0-.75-1.55Z"/></svg>
+            Google Sheets
+          </div>
+          <div class="trust-item">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5a9.5 9.5 0 1 1 0 19 9.5 9.5 0 0 1 0-19Zm.95 4.55-.2.01-3.35 3.02-1.5-1.5a1 1 0 1 0-1.41 1.42l2.2 2.2a1 1 0 0 0 1.45-.04l4.02-4.57a1 1 0 0 0-.75-1.55Z"/></svg>
+            Google Forms
+          </div>
+          <div class="trust-item">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5a9.5 9.5 0 1 1 0 19 9.5 9.5 0 0 1 0-19Zm.95 4.55-.2.01-3.35 3.02-1.5-1.5a1 1 0 1 0-1.41 1.42l2.2 2.2a1 1 0 0 0 1.45-.04l4.02-4.57a1 1 0 0 0-.75-1.55Z"/></svg>
+            Google Workspace
+          </div>
         </div>
-    </div>
+      </section>
 
-    <section id="ventajas" class="features">
+      <section class="features" id="features">
         <div class="section-header">
-            <h2 data-i18n="feat-title">¿Por qué pagar suscripciones externas si ya usas Google?</h2>
-            <p data-i18n="feat-desc">Las pymes y autónomos pierden horas cada día copiando datos entre hojas, generando facturas a mano y organizando archivos. Te mostramos por qué la automatización nativa supera a las plataformas externas de pago recurrente.</p>
+          <h2 data-i18n="feat-title">¿Por qué pagar suscripciones externas si ya usas Google?</h2>
+          <p data-i18n="feat-desc">Las pymes y autónomos pierden horas cada día copiando datos entre hojas, generando facturas a mano y organizando archivos. Te mostramos por qué la automatización nativa supera a las plataformas externas de pago recurrente.</p>
         </div>
+
         <div class="comparison-grid">
-            <div class="card glass-container">
-                <div class="card-icon">⚡</div>
-                <h3 data-i18n="card1-title">Cero Intermediarios</h3>
-                <p data-i18n="card1-desc">Elimina conectores externos que cobran por cada tarea o ejecución. Todo corre de forma autónoma, ilimitada y segura dentro de tus propios servidores de Google.</p>
-            </div>
-            <div class="card glass-container">
-                <div class="card-icon">🔒</div>
-                <h3 data-i18n="card2-title">Privacidad Absoluta</h3>
-                <p data-i18n="card2-desc">Tus datos confidenciales, facturas y registros de clientes nunca salen del entorno corporativo ni pasan por servidores de terceros.</p>
-            </div>
-            <div class="card glass-container">
-                <div class="card-icon">💰</div>
-                <h3 data-i18n="card3-title">Ahorro Real y Escalable</h3>
-                <p data-i18n="card3-desc">Pago único por desarrollo. Sin suscripciones ni cargos adicionales que aumenten a medida que crece el volumen de operaciones de tu negocio.</p>
-            </div>
-        </div>
-    </section>
+          <article class="card glass-container">
+            <div class="card-icon">⚡</div>
+            <h3 data-i18n="card1-title">Cero Intermediarios</h3>
+            <p data-i18n="card1-desc">Elimina conectores externos que cobran por cada tarea o ejecución. Todo corre de forma autónoma, ilimitada y segura dentro de tus propios servidores de Google.</p>
+          </article>
 
-    <section id="contacto" class="contact-section">
+          <article class="card glass-container">
+            <div class="card-icon">🔒</div>
+            <h3 data-i18n="card2-title">Privacidad Absoluta</h3>
+            <p data-i18n="card2-desc">Tus datos confidenciales, facturas y registros de clientes nunca salen del entorno corporativo ni pasan por servidores de terceros.</p>
+          </article>
+
+          <article class="card glass-container">
+            <div class="card-icon">📈</div>
+            <h3 data-i18n="card3-title">Ahorro Real y Escalable</h3>
+            <p data-i18n="card3-desc">Pago único por desarrollo. Sin suscripciones ni cargos adicionales que aumenten a medida que crece el volumen de operaciones de tu negocio.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="examples-section" id="examples">
+        <div class="section-header">
+          <h2 data-i18n="examples-title">Algunos ejemplos</h2>
+        </div>
+
+        <div class="video-grid">
+          <article class="video-card glass-container">
+            <video autoplay muted loop playsinline>
+              <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4" />
+            </video>
+            <p data-i18n="example-label-1">Organización automática de carpetas</p>
+          </article>
+
+          <article class="video-card glass-container">
+            <video autoplay muted loop playsinline>
+              <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" type="video/webm" />
+            </video>
+            <p data-i18n="example-label-2">Generación de facturas y documentos</p>
+          </article>
+
+          <article class="video-card glass-container">
+            <video autoplay muted loop playsinline>
+              <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4" />
+            </video>
+            <p data-i18n="example-label-3">Sincronización y alertas inteligentes</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="contact-section" id="contact">
         <div class="contact-box glass-container">
-            <h2 data-i18n="form-title">Solicita tu Automatización</h2>
-            <p data-i18n="form-desc">Cuéntanos qué procesos repetitivos realizas en tu Drive o Sheets y te diseñaremos un flujo automatizado a medida.</p>
-            <form id="automationForm">
-                <div class="form-group">
-                    <label for="nombre" data-i18n="lbl-nombre">Nombre o Empresa</label>
-                    <input type="text" id="nombre" name="nombre" class="form-control glass-input" placeholder="Ej. Ana Pérez (Consultoría)" data-i18n-ph="ph-nombre" required>
-                </div>
-                <div class="form-group">
-                    <label for="email" data-i18n="lbl-email">Correo Electrónico</label>
-                    <input type="email" id="email" name="email" class="form-control glass-input" placeholder="tu@correo.com" data-i18n-ph="ph-email" required>
-                </div>
-                <div class="form-group">
-                    <label for="mensaje" data-i18n="lbl-mensaje">¿Qué proceso te gustaría automatizar?</label>
-                    <textarea id="mensaje" name="mensaje" class="form-control glass-input" placeholder="Ej. Automatizar la creación de carpetas y PDFs de factura cada vez que se rellena un Google Form..." data-i18n-ph="ph-mensaje" required></textarea>
-                </div>
-                <button type="submit" class="submit-btn" id="submitBtn" data-i18n="btn-submit">Enviar Petición de Automatización</button>
-                <div id="form-status"></div>
-            </form>
-        </div>
-    </section>
+          <h2 data-i18n="form-title">Solicita tu Automatización</h2>
+          <p data-i18n="form-desc">Cuéntanos qué procesos repetitivos realizas en tu Drive o Sheets y te diseñaremos un flujo automatizado a medida.</p>
 
-    <footer class="glass-container">
-        <p>&copy; 2026 <span>DriveAutomate</span>. <span data-i18n="footer-rights">Automatización inteligente en entorno Google para Pymes y Autónomos.</span></p>
-        <div class="lang-switch-container">
-            <button id="langToggleBtn" class="lang-btn">
-                🌐 <span id="langText">EN</span>
-            </button>
+          <form id="automationForm" novalidate>
+            <div class="form-group">
+              <label for="nombre" data-i18n="lbl-nombre">Nombre o Empresa</label>
+              <input id="nombre" name="nombre" class="form-control glass-input" type="text" required data-i18n-ph="ph-nombre" placeholder="Ej. Ana Pérez (Consultoría)" />
+            </div>
+
+            <div class="form-group">
+              <label for="email" data-i18n="lbl-email">Correo Electrónico</label>
+              <input id="email" name="email" class="form-control glass-input" type="email" required data-i18n-ph="ph-email" placeholder="tu@correo.com" />
+            </div>
+
+            <div class="form-group">
+              <label for="mensaje" data-i18n="lbl-mensaje">¿Qué proceso te gustaría automatizar?</label>
+              <textarea id="mensaje" name="mensaje" class="form-control glass-input" required data-i18n-ph="ph-mensaje" placeholder="Ej. Automatizar la creación de carpetas y PDFs de factura cada vez que se rellena un Google Form..."></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitBtn" data-i18n="btn-submit">Enviar Petición de Automatización</button>
+          </form>
+
+          <div id="form-status" aria-live="polite"></div>
         </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        <span class="logo-badge"></span>
+        <span>DriveAutomate</span>
+        <span data-i18n="footer-rights">Automatización inteligente en entorno Google para Pymes y Autónomos.</span>
+      </p>
     </footer>
+
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
