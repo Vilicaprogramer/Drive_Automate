@@ -26,6 +26,9 @@ const translations = {
     'example-label-1': 'Organización automática de carpetas',
     'example-label-2': 'Generación de facturas y documentos',
     'example-label-3': 'Sincronización y alertas inteligentes',
+    'example-desc-1': 'Cada vez que se da de alta un nuevo cliente, el sistema crea automáticamente su estructura de carpetas en Google Drive y asigna los permisos correspondientes sin intervención humana.',
+    'example-desc-2': 'Genera PDFs automáticos a partir de datos en Google Sheets o Forms. Envía la factura final por correo al cliente y guarda una copia de seguridad en tu Drive corporativo.',
+    'example-desc-3': 'Conecta tus hojas de cálculo con tu correo o calendario. Recibe notificaciones automáticas cuando el stock esté bajo o cuando un contrato esté a punto de caducar.',
     'form-title': 'Solicita tu Automatización',
     'form-desc': 'Cuéntanos qué procesos repetitivos realizas en tu Drive o Sheets y te diseñaremos un flujo automatizado a medida.',
     'lbl-nombre': 'Nombre o Empresa',
@@ -65,6 +68,9 @@ const translations = {
     'example-label-1': 'Automatic folder organization',
     'example-label-2': 'Invoice and document generation',
     'example-label-3': 'Smart synchronization and alerts',
+    'example-desc-1': 'Whenever a new client is onboarded, the system automatically creates their folder structure in Google Drive and assigns the appropriate permissions without human intervention.',
+    'example-desc-2': 'Generate automated PDFs from data in Google Sheets or Forms. It emails the final invoice to the client and securely saves a backup copy in your Drive.',
+    'example-desc-3': 'Connect your spreadsheets with your email or calendar. Receive automated notifications when stock is low or a contract is about to expire.',
     'form-title': 'Request Your Automation',
     'form-desc': 'Tell us which repetitive workflows you perform in Drive or Sheets, and we will build a custom automated flow for you.',
     'lbl-nombre': 'Name or Company',
@@ -130,6 +136,7 @@ if (langToggleBtn) {
   });
 }
 
+/* Lógica del Menú Hamburguesa */
 if (menuToggle && mobileMenu) {
   const closeMenu = () => {
     mobileMenu.classList.remove('is-open');
@@ -158,12 +165,29 @@ if (menuToggle && mobileMenu) {
   });
 }
 
+/* Lógica de los Vídeos Desplegables (Acordeón) */
+const videoCards = document.querySelectorAll('.video-card');
+videoCards.forEach(card => {
+  card.addEventListener('click', () => {
+    // Opción: Cerrar las demás tarjetas si solo quieres una abierta a la vez
+    // videoCards.forEach(c => {
+    //   if (c !== card) {
+    //     c.classList.remove('is-expanded');
+    //     c.setAttribute('aria-expanded', 'false');
+    //   }
+    // });
+    
+    // Alterna la clase para expandir/contraer
+    const isExpanded = card.classList.toggle('is-expanded');
+    card.setAttribute('aria-expanded', String(isExpanded));
+  });
+});
+
+/* Lógica del Formulario */
 if (form && submitBtn && formStatus) {
   form.addEventListener('submit', (event) => {
     event.preventDefault();
     submitBtn.disabled = true;
-    
-    // CORRECCIÓN DEL BUG DE COPILOT: Las claves con guiones se leen con corchetes
     submitBtn.textContent = translations[currentLang]['btn-submitting'];
     formStatus.style.display = 'none';
 
