@@ -95,9 +95,7 @@ function setLanguage(lang) {
   currentLang = lang;
   const t = translations[lang];
 
-  if (!t) {
-    return;
-  }
+  if (!t) return;
 
   document.documentElement.lang = lang;
   document.title = t['meta-title'];
@@ -139,7 +137,8 @@ if (menuToggle && mobileMenu) {
     menuToggle.setAttribute('aria-expanded', 'false');
   };
 
-  menuToggle.addEventListener('click', () => {
+  menuToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
     const isOpen = mobileMenu.classList.toggle('is-open');
     menuToggle.classList.toggle('is-open', isOpen);
     menuToggle.setAttribute('aria-expanded', String(isOpen));
@@ -152,7 +151,7 @@ if (menuToggle && mobileMenu) {
   document.addEventListener('click', (event) => {
     const clickedInsideMenu = mobileMenu.contains(event.target);
     const clickedToggle = menuToggle.contains(event.target);
-
+    
     if (!clickedInsideMenu && !clickedToggle) {
       closeMenu();
     }
@@ -163,7 +162,9 @@ if (form && submitBtn && formStatus) {
   form.addEventListener('submit', (event) => {
     event.preventDefault();
     submitBtn.disabled = true;
-    submitBtn.textContent = translations[currentLang].btn-submitting;
+    
+    // CORRECCIÓN DEL BUG DE COPILOT: Las claves con guiones se leen con corchetes
+    submitBtn.textContent = translations[currentLang]['btn-submitting'];
     formStatus.style.display = 'none';
 
     const formData = new FormData(form);
