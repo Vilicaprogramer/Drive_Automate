@@ -394,7 +394,7 @@ h1 span.highlight {
 .card p { color: var(--text-muted); font-size: 0.95rem; }
 
 /* =========================================
-   VÍDEOS DE EJEMPLO
+   VÍDEOS DE EJEMPLO (EFECTO ACORDEÓN)
    ========================================= */
 .examples-section {
   padding: 50px 5% 100px;
@@ -411,8 +411,11 @@ h1 span.highlight {
 .video-card {
   padding: 20px;
   border-radius: 20px;
-  text-align: center;
+  text-align: left; /* Alineado a la izquierda para mejor lectura */
   transition: var(--transition);
+  cursor: pointer; /* Indica que toda la tarjeta es clicable */
+  display: flex;
+  flex-direction: column;
 }
 
 .video-card:hover {
@@ -431,10 +434,72 @@ h1 span.highlight {
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.video-card p {
+.video-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.video-header h3 {
   font-weight: 600;
   color: var(--text-main);
-  font-size: 1.05rem;
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.expand-icon {
+  width: 24px;
+  height: 24px;
+  color: var(--text-muted);
+  transition: transform 0.4s ease, color 0.3s ease;
+  flex-shrink: 0;
+}
+
+.video-card:hover .expand-icon {
+  color: var(--primary);
+}
+
+/* Animación Acordeón con CSS Grid */
+.video-details-wrapper {
+  display: grid;
+  grid-template-rows: 0fr; /* Oculto por defecto */
+  transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.video-details {
+  overflow: hidden;
+}
+
+.video-details p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin: 0;
+  padding-top: 12px;
+  line-height: 1.5;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* Estado Activo / Expandido */
+.video-card.is-expanded {
+  border-color: rgba(59, 130, 246, 0.6) !important;
+  background: rgba(15, 23, 42, 0.7) !important;
+}
+
+.video-card.is-expanded .expand-icon {
+  transform: rotate(180deg);
+  color: var(--primary);
+}
+
+.video-card.is-expanded .video-details-wrapper {
+  grid-template-rows: 1fr; /* Muestra el contenido */
+}
+
+.video-card.is-expanded .video-details p {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* =========================================
