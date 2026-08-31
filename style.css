@@ -394,7 +394,7 @@ h1 span.highlight {
 .card p { color: var(--text-muted); font-size: 0.95rem; }
 
 /* =========================================
-   VÍDEOS DE EJEMPLO (EFECTO ACORDEÓN)
+   VÍDEOS DE EJEMPLO (ACORDEÓN MEJORADO)
    ========================================= */
 .examples-section {
   padding: 50px 5% 100px;
@@ -411,9 +411,8 @@ h1 span.highlight {
 .video-card {
   padding: 20px;
   border-radius: 20px;
-  text-align: left; /* Alineado a la izquierda para mejor lectura */
   transition: var(--transition);
-  cursor: pointer; /* Indica que toda la tarjeta es clicable */
+  cursor: pointer;
   display: flex;
   flex-direction: column;
 }
@@ -435,48 +434,53 @@ h1 span.highlight {
 }
 
 .video-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
+  width: 100%;
+  text-align: center;
+  padding: 5px 0;
 }
 
 .video-header h3 {
-  font-weight: 600;
-  color: var(--text-main);
-  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  font-size: 1.15rem;
   margin: 0;
+  transition: color 0.3s ease;
 }
 
-.expand-icon {
-  width: 24px;
-  height: 24px;
-  color: var(--text-muted);
-  transition: transform 0.4s ease, color 0.3s ease;
-  flex-shrink: 0;
-}
-
-.video-card:hover .expand-icon {
+.video-card:hover .video-header h3 {
   color: var(--primary);
 }
 
-/* Animación Acordeón con CSS Grid */
+/* Animación Acordeón */
 .video-details-wrapper {
   display: grid;
-  grid-template-rows: 0fr; /* Oculto por defecto */
+  grid-template-rows: 0fr;
   transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .video-details {
-  overflow: hidden;
+  overflow: hidden; /* Esto es vital para ocultar el texto inicial */
+}
+
+/* Línea separadora */
+.card-divider {
+  border: none;
+  height: 1px;
+  background: radial-gradient(circle, var(--primary) 0%, transparent 100%);
+  width: 80%;
+  margin: 15px auto;
+  opacity: 0;
+  transform: scaleX(0);
+  transition: all 0.4s ease;
 }
 
 .video-details p {
   color: var(--text-muted);
   font-size: 0.95rem;
   margin: 0;
-  padding-top: 12px;
-  line-height: 1.5;
+  padding-bottom: 10px;
+  line-height: 1.6;
+  text-align: center;
   opacity: 0;
   transform: translateY(-10px);
   transition: opacity 0.4s ease, transform 0.4s ease;
@@ -488,18 +492,23 @@ h1 span.highlight {
   background: rgba(15, 23, 42, 0.7) !important;
 }
 
-.video-card.is-expanded .expand-icon {
-  transform: rotate(180deg);
+.video-card.is-expanded .video-header h3 {
   color: var(--primary);
 }
 
 .video-card.is-expanded .video-details-wrapper {
-  grid-template-rows: 1fr; /* Muestra el contenido */
+  grid-template-rows: 1fr;
+}
+
+.video-card.is-expanded .card-divider {
+  opacity: 1;
+  transform: scaleX(1);
 }
 
 .video-card.is-expanded .video-details p {
   opacity: 1;
   transform: translateY(0);
+  transition-delay: 0.1s; /* Retraso sutil para que aparezca después de abrirse */
 }
 
 /* =========================================
